@@ -14,12 +14,12 @@ private:
 
 	int rows,
 		columns;
+	char** board;
 public:
-	char **board;
-	Board(char** boardIn, int rowsIn, int columnsIn);
-	int getRows();
-	int getColumns();
-	char getColor(int xCoord, int yCoord);
+	Board(int rowsIn, int columnsIn);
+	int getRows() const;
+	int getColumns() const;
+	char getColor(int xCoord, int yCoord) const;
 	void changeTile(int antXCoord, int antYCoord);
 	~Board();
 };

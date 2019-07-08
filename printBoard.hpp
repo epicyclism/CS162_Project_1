@@ -9,7 +9,7 @@
 
 #include "Ant.hpp"
 
-void printBoard(Board *b, int rows, int columns, Ant a);
+void printBoard(Board const& b, Ant a);
 
 #endif
 

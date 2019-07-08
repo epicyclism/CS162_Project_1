@@ -32,14 +32,7 @@ int main()
 		columns,
 		steps,
 		startingRow,
-		startingColumn,
-
-		//Variables used to trace the position of the ant on the board
-		antXCoord,
-		antYCoord,
-
-		accumulator = 0;
-	
+		startingColumn;
 
 	int userChoice = menu();
 
@@ -48,53 +41,27 @@ int main()
 		menu(rows, columns, steps, startingRow, startingColumn);
 
 		//Create the board and ant objects
-		//Set to + 2 to allow for out of boundary access
-		char **array = new char*[rows];
-		for (int i = 0; i < rows; i++)
-			array[i] = new char[columns];
-
-		//Set the board to blank spaces
-		for (int i = 0; i < rows; i++)
-			for (int j = 0; j < columns; j++)
-				array[i][j] = ' ';
 
 		//Create new board object
-		Board *board = new Board(array, rows, columns);
+		Board board(rows, columns);
 
 		//Create new ant object
-		Ant ant(board, startingRow, startingColumn);
+		Ant ant(&board, startingRow, startingColumn);
 
 		//Make the ant move!
-		while (accumulator < steps)
+		for (int step = 0; step < steps; ++step)
 		{
-			antXCoord = ant.getRow();
-			antYCoord = ant.getColumn();
-
 			ant.manipulateAnt();
 
-			printBoard(board, rows, columns, ant);
-			accumulator++;
+			printBoard(board, ant);
 
-			cout << "This is step: " << accumulator << endl;
-
+			cout << "This is step: " << step << endl;
 		}
-
-		//Deallocate the memory from the array and board
-		for (int i = 0; i < rows; i++)
-			delete[] array[i];
-
-		delete[] array;
-		array = NULL;
-
-		delete board;
-		board = NULL;
 
 		userChoice = menu();
 	}
 
 	//Ask the uesr if they wish to play again
 	if (userChoice == 2)
-		cout << "Farewell! Thanks for playing. " << endl; 
-	
-		
+		cout << "Farewell! Thanks for playing. " << endl;
 }

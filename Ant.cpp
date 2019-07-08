@@ -7,17 +7,8 @@
 #include "Ant.hpp"
 
 
-/************************************************************************************
-* Ant::Ant(Board *boardIn, int startingRow, int startingColumn)                      
-*
-* Entry: When an ant object is created from main
-*
-* Exit:  When the constructor assigns all the variables 
-*
-* Purpose: Constructor to initalize the variables when an ant object is created
-*************************************************************************************/
 
-Ant::Ant(Board *boardIn, int startingRow, int startingColumn)
+Ant::Ant(Board* boardIn, int startingRow, int startingColumn)
 {
 	board = boardIn;
 	antXCoord = startingRow;
@@ -30,17 +21,17 @@ Ant::Ant(Board *boardIn, int startingRow, int startingColumn)
 * Accessor and mutator methods for the Ant class
 *************************************************************************************/
 
-int Ant::getRow()
+int Ant::getRow() const
 {
 	return antXCoord;
 }
 
-int Ant::getColumn()
+int Ant::getColumn() const
 {
 	return antYCoord;
 }
 
-int Ant::getDirection()
+int Ant::getDirection() const
 {
 	return antDirection;
 }
@@ -54,7 +45,7 @@ void Ant::setDirection(DIRECTION currentDir)
 *
 * Entry: Called from main() when the ant is ready to be moved around the board
 *
-* Exit:  After the turnAnt(), board->changeTile(antXCoord, antYCoord), moveAnt() 
+* Exit:  After the turnAnt(), board->changeTile(antXCoord, antYCoord), moveAnt()
 * and outOfBoundsCheck() are called
 *
 * Purpose: Controls four function calls the manipulate the ant's movement, turns and
@@ -77,7 +68,7 @@ void Ant::manipulateAnt()
 * Entry: From void Ant::manipulateAnt()
 *
 * Exit:  After the ant's orientation is changed.  It will turn right if is on a white
-* tile or turn left if it on a black tile. 
+* tile or turn left if it on a black tile.
 *
 * Purpose: Checks the tile color and rotates the ant accordingly to the conditions
 *************************************************************************************/
@@ -96,7 +87,7 @@ void Ant::turnAnt()
 		else if (antDirection == south)
 			antDirection = west;
 
-		else if (antDirection = west)
+		else if (antDirection == west)
 			antDirection = north;
 	}
 
@@ -112,7 +103,7 @@ void Ant::turnAnt()
 		else if (antDirection == south)
 			antDirection = east;
 
-		else if (antDirection = west)
+		else if (antDirection == west)
 			antDirection = south;
 	}
 
@@ -125,7 +116,7 @@ void Ant::turnAnt()
 *
 * Exit:  After the ant moves forward, which is dictated by its orientation
 *
-* Purpose: Checks the orientation of the ant and moves it forward. 
+* Purpose: Checks the orientation of the ant and moves it forward.
 *************************************************************************************/
 void Ant::moveAnt()
 {
@@ -151,7 +142,7 @@ void Ant::moveAnt()
 * Exit:  After it checks the ant's is outside the board
 *
 * Purpose: Checks to see if the ant is outside the board.  If it is, it is shifted
-           180 degrees and moved back into the board
+		   180 degrees and moved back into the board
 *************************************************************************************/
 void Ant::outOfBoundsCheck()
 {

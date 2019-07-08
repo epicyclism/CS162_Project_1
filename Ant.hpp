@@ -16,17 +16,17 @@ class Ant
 	enum DIRECTION { north, east, south, west };
 
 private:
-	
+
 	DIRECTION antDirection;
 	int antXCoord,
 		antYCoord;
 
 public:
-	Board *board;
-	Ant(Board *boardIn, int startingRow, int startingColumn);
-	int getRow();
-	int getColumn();
-	int getDirection();
+	Board* board;
+	Ant(Board* boardIn, int startingRow, int startingColumn);
+	int getRow() const;
+	int getColumn() const;
+	int getDirection() const;
 	void setDirection(DIRECTION currentDirection);
 	void manipulateAnt();
 	void turnAnt();
